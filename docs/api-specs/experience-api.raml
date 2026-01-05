@@ -1,0 +1,48 @@
+#%RAML 1.0
+title: Retail Experience API
+version: v1
+baseUri: /api/v1
+mediaType: application/json
+
+/orders:
+  post:
+    description: Create a new order
+    body:
+      application/json:
+        example:
+          {
+            "customerId": "C123",
+            "items": [
+              { "productId": "P100", "quantity": 2 }
+            ],
+            "paymentMethod": "CARD"
+          }
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {
+                "orderId": "ORD123",
+                "status": "CREATED"
+              }
+      400:
+        body:
+          application/json:
+            example:
+              { "message": "Invalid request" }
+
+  get:
+    description: Get order by ID
+    queryParameters:
+      orderId:
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "orderId": "ORD123",
+                "status": "COMPLETED"
+              }
