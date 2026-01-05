@@ -1,0 +1,15 @@
+#%RAML 1.0
+title: Retail Process API
+version: v1
+baseUri: /process/v1
+mediaType: application/json
+
+/orders:
+  post:
+    description: Orchestrates order processing
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              { "orderId": "ORD123", "status": "SUCCESS" }
